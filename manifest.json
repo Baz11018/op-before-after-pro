@@ -1,1 +1,23 @@
-{"id":"/op-before-after/","name":"OP Before & After","short_name":"OP Before & After","description":"Simple before and after photo reports","start_url":"./?app=op-before-after-v1-5-1","scope":"./","display":"standalone","background_color":"#f4f6fb","theme_color":"#4f46ff","icons":[{"src":"before-after-icon-192-v15.png","sizes":"192x192","type":"image/png"},{"src":"before-after-icon-512-v15.png","sizes":"512x512","type":"image/png"}]}
+{
+  "id": "/op-before-after-pro/",
+  "name": "OP Before & After PRO",
+  "short_name": "OP Before After PRO",
+  "description": "Professional branded before and after progress reports",
+  "start_url": "./?app=op-before-after-pro-v1",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f6fb",
+  "theme_color": "#4f46ff",
+  "icons": [
+    {
+      "src": "before-after-icon-192-v15.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "before-after-icon-512-v15.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
