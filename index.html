@@ -72,18 +72,23 @@ async function generatePdf(){
  let cover=basePage();let y=PH-143;
  t(cover,r.title,M,y,20,bold);y-=27;t(cover,'PROGRESS REPORT  /  BEFORE & AFTER',M,y,9,font,muted);y-=21;cover.drawLine({start:{x:M,y},end:{x:M+65,y},thickness:2.5,color:accent});y-=45;
  const details=[['PROJECT',r.title],['REPORT DATE',fmt(r.date)],['PREPARED BY',brand.company||'']];
+ const valueX=M+155;
+ const rowHeight=56;
  for(let [label,val] of details){
-  const rowTop=y;
-  const labelY=rowTop-2;
-  t(cover,label,M,labelY,9,bold,muted);
-  const valueX=M+155;
+  const lineTop=y;
+  const lineBottom=lineTop-rowHeight;
+  const centerY=(lineTop+lineBottom)/2;
+  const textY=centerY-5;
+  t(cover,label,M,textY,9,bold,muted);
   const valueLines=val?wrap(val,WW-155,10):[];
-  if(valueLines.length){valueLines.forEach((v,i)=>t(cover,v,valueX,labelY-i*14,10,font));}
-  const rowHeight=Math.max(40,valueLines.length?valueLines.length*14+14:16);
-  const lineY=rowTop-rowHeight;
-  rule(cover,lineY);
-  y=lineY-18;
+  if(valueLines.length){
+   const blockOffset=((valueLines.length-1)*14)/2;
+   valueLines.forEach((v,i)=>t(cover,v,valueX,textY+blockOffset-i*14,10,font));
+  }
+  cover.drawLine({start:{x:M,y:lineBottom},end:{x:R,y:lineBottom},thickness:.7,color:accent});
+  y=lineBottom;
  }
+ y-=18;
  let scopeHeading=(r.scopeTitle??'Report Scope').trim();let scopeText=(r.scopeDescription??'').trim();if(scopeHeading||scopeText){if(scopeHeading){for(let l of wrap(scopeHeading,WW,11,bold)){t(cover,l,M,y,11,bold);y-=16}y-=8}if(scopeText){for(let l of wrap(scopeText,WW,10)){t(cover,l,M,y,10);y-=16}}}
  if(brand.email||brand.phone||brand.website){y-=32;t(cover,'COMPANY CONTACT',M,y,10,bold);y-=20;for(let val of [brand.email,brand.phone,brand.website].filter(Boolean)){t(cover,val,M,y,9,font,muted);y-=17}}
  const imcache=new Map();async function photo(id){if(imcache.has(id))return imcache.get(id);let rec=await get('photos',id);if(!rec)return null;let im=await doc.embedJpg(new Uint8Array(await rec.blob.arrayBuffer()));imcache.set(id,im);return im}
