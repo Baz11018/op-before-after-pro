@@ -1,13 +1,13 @@
 {
   "id": "/op-before-after-pro/",
   "name": "OP Before & After PRO",
-  "short_name": "OP Before After PRO",
+  "short_name": "B&A Report",
   "description": "Professional branded before and after progress reports",
-  "start_url": "./?app=op-before-after-pro-v1",
+  "start_url": "./?app=op-before-after-pro-v3",
   "scope": "./",
   "display": "standalone",
   "background_color": "#f4f6fb",
-  "theme_color": "#4f46ff",
+  "theme_color": "#3484dc",
   "icons": [
     {
       "src": "before-after-icon-192-v15.png",
