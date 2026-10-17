@@ -3,7 +3,7 @@
   "name": "OP Before & After PRO",
   "short_name": "B&A Report",
   "description": "Professional branded before and after progress reports",
-  "start_url": "./?app=op-before-after-pro-v8",
+  "start_url": "./?app=op-before-after-pro-v9",
   "scope": "./",
   "display": "standalone",
   "background_color": "#f4f6fb",
