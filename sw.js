@@ -1,4 +1,4 @@
-const CACHE='op-before-after-pro-v9',PREFIX='op-before-after-pro-';
+const CACHE='op-before-after-pro-auth-v2-report-frame',PREFIX='op-before-after-pro-';
 const ASSETS=['./','./index.html','./manifest.json','./before-after-icon-192-v15.png','./before-after-icon-512-v15.png','./apple-touch-icon-before-after-v15.png','./pdf-preview.mjs','./pdf-preview-worker.mjs'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith(PREFIX)&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
